@@ -1,0 +1,25 @@
+name: intimacy_plus
+description: Therapeutic educational app about intimacy and sexuality
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  firebase_core: ^2.15.1
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.13.6
+  sqflite: ^2.3.0
+  path_provider: ^2.1.1
+  flutter_secure_storage: ^9.0.0
+  http: ^1.1.0
+  provider: ^6.1.1
+
+flutter:
+  uses-material-design: true
