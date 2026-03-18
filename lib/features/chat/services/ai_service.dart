@@ -7,12 +7,10 @@ class AiService {
   static const _model = 'llama-3.3-70b-versatile';
   static const _system = 'Доброзичливий AI помічник для Intimacy+ (здорові стосунки, комунікація). Українською, емпатично, без медичних порад.';
 
-  /// TODO: Вставте свій Groq API ключ нижче (замініть ПУСТО на ключ):
-  /// Отримати: https://console.groq.com/keys
-  static const String _apiKey = 'ПУСТО';
+  static const String _apiKey = String.fromEnvironment('GROQ_API_KEY', defaultValue: '');
 
   static Future<String> send(List<ChatMessage> history) async {
-    if (_apiKey == 'ПУСТО') throw Exception('API ключ не встановлено! Відкрийте ai_service.dart і вставте ключ.');
+    if (_apiKey.isEmpty) throw Exception('API ключ не встановлено!');
     final resp = await http.post(Uri.parse(_url), headers: {'Content-Type':'application/json','Authorization':'Bearer $_apiKey'}, body: jsonEncode({
       'model': _model,
       'messages': [{'role':'system','content':_system}, ...history.map((m)=>m.toApiMap())],
